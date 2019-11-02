@@ -1,38 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
-int countLastZeros(int number);
+int find5(int number);
   
 int main()
 {
-  std::cout << "fhfj"<< std::endl;
-  int n = 100;
-  int lastZeros = 0;
-  int lastNumber = 5;
-  for (int i = 2; i <= n; i++)
-  {
-    for (int j = lastNumber; j <= n; j = j + 5)
-    {
-      int nzeros = countLastZeros(i * j);
-std::cout << ":" << nzeros << std::endl;
-      if (nzeros > 0)
-      {
-        lastNumber = j + 5;
-        lastZeros = lastZeros + nzeros;
-      }
-    }
-  }
-  std::cout << ":" << lastZeros << std::endl;
+  std::cout << "fhfj:";
+  int n;
+  std::cin >> n; 
+  std::cout << std::endl;
+  int numberzero = 0;
+  numberzero = find5(n); 
+  std::cout << ":" << numberzero << std::endl;
   return 0;
 }
 
-int countLastZeros(int number)
+int find5(int number)
 {
-  int lzeros = 0;
-  for (double i = number / 10; i == (int)i; i = i / 10)
-  {
-    lzeros++;
-  }
-  return lzeros;
+  int zero = 0;
+  for (int i = int(log(number) / log(5)); i > 0; i--)
+  {  
+    int n5s = number / pow(5, i);
+    zero += n5s;
+  } 
+  return zero;
 }
 
